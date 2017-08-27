@@ -1,7 +1,8 @@
 'use strict';
 
 import React from 'react';
-
+//require('../views/style.scss');
+//import styles from '../views/style.css';
 export default class ImageViewer extends React.Component {
 
     constructor(props) {
