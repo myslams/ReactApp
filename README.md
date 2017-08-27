@@ -8,8 +8,11 @@ Deployed o aws EC2 instance and running it using forever.
 The application is designed using nodejs, react, semantic ui( as a css framework) etc.
 
 After npm install. Following are the commands.
+
 For running the app    : npm start
+
 For building the app   : npm run build
+
 For running unit tests : npm test
 
 Features of the App
