@@ -1,9 +1,16 @@
 Flickr feed viewer and search
+
 This application fetches pubic images from flickr ans hows it to the user. The user can also enter tags and search for images based on these tags.
 
 Demo : http://ec2-52-53-167-255.us-west-1.compute.amazonaws.com
+Deployed o aws EC2 instance and running it using forever.
 
 The application is designed using nodejs, react, semantic ui( as a css framework) etc.
+
+After npm install. Following are the commands.
+For running the app    : npm start
+For building the app   : npm run build
+For running unit tests : npm test
 
 Features of the App
 1) Shows images in a property ordered image gallery.
