@@ -19,7 +19,7 @@ describe('Tests for rest api', function () {
     let server = require('../src/server');
 
     it('Api provides feeds test', function (done) {
-        chai.request("http://localhost:3000")
+        chai.request("http://localhost:80")
             .get('/feeds')
             .end((err, res) => {
                 expect(res).to.have.status(200);
@@ -29,7 +29,7 @@ describe('Tests for rest api', function () {
             });
     });
     it('Application is loaded instead of feeds test', function (done) {
-        chai.request("http://localhost:3000")
+        chai.request("http://localhost:80")
             .get('')
             .end((err, res) => {
                 expect(res).to.have.status(200);

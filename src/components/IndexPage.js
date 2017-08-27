@@ -5,7 +5,7 @@ import config from '../config';
 import SearchBox from './SearchBox';
 import ImageViewer from './ImageViewer';
 import ImageService from '../services/ImageService';
-let imageService = new ImageService(config.vodService.endpointUrl);
+let imageService = new ImageService(config.imageService.endpointUrl);
 export default class IndexPage extends React.Component {
 
     constructor(props) {
@@ -23,8 +23,6 @@ export default class IndexPage extends React.Component {
       });
       imageService.getData(tags)
             .then(imageData => {
-           console.log("imageData");
-                    console.log(imageData);
             // When the data is received successfully by back end service and status is success. Updates the videoList.
                 if (imageData.status === "success") {
                     var imageList = imageData.res;
@@ -32,8 +30,6 @@ export default class IndexPage extends React.Component {
                     this.setState({
                         imageList
                     });
-                    console.log("this.state");
-                    console.log(this.state);
                 } else if (imageData.status === "error") { // When service return status error writes error in videoList.
                     var imageList = {"items":"error"};
                     this.setState({

@@ -5,7 +5,7 @@ export default class ImageService {
         this.endpointUrl = endpointUrl;
     }
     getData(tags) {
-        return axios.get(this.endpointUrl+"/"+tags)
+        return axios.get(this.endpointUrl+tags)
             .then(response =>
                 response.status === 200 ? {
                     "res": response.data,

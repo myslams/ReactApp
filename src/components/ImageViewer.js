@@ -18,20 +18,28 @@ export default class ImageViewer extends React.Component {
                     </div>
                     </div>;
     }
-      if (!images || images.length === 0) {
+      if (!images) {
             return  <div className="ui active inverted dimmer">
                     <div className="ui medium text loader">Loading</div>
                     </div>;
 		}
-
+      
+      if (images.length===0) {
+            return  <div className="ui error no-image message">
+                    <div className="header">
+                    No images found
+                    </div>
+                    </div>;
+		}
       let slides =[];
-      slides = images.map(image => {
+      slides = images.map((image,index) => {
           return (
 
-      <img className="ui bordered image" src={image.media.m}/>
+      <img key={index} className="ui bordered image" src={image.media.m}/>
 
           );
       });
+          
     return (
         <div>
 

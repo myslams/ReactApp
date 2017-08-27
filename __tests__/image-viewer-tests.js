@@ -18,7 +18,7 @@ describe('Tests for Image Viewer component', function () {
                 it('on passing images', function () {
                     var imageList=[];
                    var wrapper = mount( <ImageViewer imageList = {imageList} > </ImageViewer>);
-                    expect(wrapper.find('.loader')).to.have.lengthOf(1);
+                    expect(wrapper.find('.no-image')).to.have.lengthOf(1);
                 });
                 it('on getting error', function () {
                     var imageList="error";

@@ -55,7 +55,7 @@ app.get('*', (req, res) => {
 });
 module.exports = server
 // start the server
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 80;
 server.listen(port, err => {
   if (err) {
     return console.error(err);

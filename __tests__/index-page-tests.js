@@ -21,7 +21,7 @@ describe('Tests for index page component', function () {
                 it('axios mock for success request', function (done) {
                             let mockAdapter = new MockAdapter(axios);
                             var tags;
-                            mockAdapter.onGet('http://localhost:3000/feeds/'+tags).reply(200,{ "items":[{
+                            mockAdapter.onGet('./feeds/'+tags).reply(200,{ "items":[{
                                 "media": {"m":"mock_image"}
                                 
                         },{
@@ -41,7 +41,7 @@ describe('Tests for index page component', function () {
     it('axios mock for error request', function (done) {
                             let mockAdapter = new MockAdapter(axios);
                             var tags;
-                            mockAdapter.onGet('http://localhost:3000/feeds/'+tags).reply(500,{});
+                            mockAdapter.onGet('./feeds/'+tags).reply(500,{});
 
                             const mockedAxiosWrapper = mount( <IndexPage> </IndexPage>);
                                 mockedAxiosWrapper.update();
