@@ -17,30 +17,26 @@ app.set('views', path.join(__dirname, 'views'));
 // define the folder that will be used for static assets
 app.use(Express.static(path.join(__dirname, 'static')));
 
+var request = require('request');
 app.get('/feeds/:tags?',(req, res) => {
-    var request = require('request');
 var propertiesObject = {"tags":req.params.tags };
-
+// send request to flikr api to get the images tags are recieved as query string in url of the nodejs endpoint eg ./feeds/<tags>
 request({url:"https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1", qs:propertiesObject}, function(err, response, body) {
-  if(err) {
-      res.json(JSON.parse(err));
-  }
-    else
-        {
-          res.status(200).json(JSON.parse(body.replace(/\\'/g,"'")));
-        }
- // console.log("Get response: " + body);
+    if(err) {
+        //error response
+        res.json(JSON.parse(err));
+    }
+    else {
+        // success response with status 200 and json output.
+        res.status(200).json(JSON.parse(body.replace(/\\'/g,"'")));
+    }
 });
-
-
 });
 // universal routing and rendering
 app.get('*', (req, res) => {
   match(
     { routes, location: req.url },
     (err, redirectLocation, renderProps) => {
-
-
       // generate the React markup for the current route
       let markup;
       if (renderProps) {

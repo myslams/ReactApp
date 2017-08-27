@@ -4,6 +4,7 @@ export default class ImageService {
     constructor(endpointUrl) {
         this.endpointUrl = endpointUrl;
     }
+    // image service to get image data from nodejs rest endpoint.
     getData(tags) {
         return axios.get(this.endpointUrl+tags)
             .then(response =>

@@ -14,43 +14,47 @@ import IndexPage from '../src/components/IndexPage';
 
 describe('Tests for index page component', function () {
             const wrapper = mount( < IndexPage > < /IndexPage>);
-                it('Component exists test', function () {
-                    expect(wrapper).to.exist;
-                }); 
-    
-                it('axios mock for success request', function (done) {
+                    it('Component exists test', function () {
+                        expect(wrapper).to.exist;
+                    });
+
+                    it('axios mock for success request', function (done) {
+                        let mockAdapter = new MockAdapter(axios);
+                        var tags;
+                        mockAdapter.onGet('./feeds/' + tags).reply(200, {
+                            "items": [{
+                                "media": {
+                                    "m": "mock_image"
+                                }
+                        }, {
+                                "media": {
+                                    "m": "mock_image"
+                                }
+                        }]
+                        });
+
+                        const mockedAxiosWrapper = mount( < IndexPage > < /IndexPage>);
+                            mockedAxiosWrapper.update();
+
+                            setImmediate(() => {
+                                expect(mockedAxiosWrapper.instance().state.imageList.items).to.have.lengthOf(2);
+                                done()
+
+                            })
+                        }); 
+                        it('axios mock for error request', function (done) {
                             let mockAdapter = new MockAdapter(axios);
                             var tags;
-                            mockAdapter.onGet('./feeds/'+tags).reply(200,{ "items":[{
-                                "media": {"m":"mock_image"}
-                                
-                        },{
-                                "media": {"m":"mock_image"}
-                                
-                        }]});
+                            mockAdapter.onGet('./feeds/' + tags).reply(500, {});
 
-                            const mockedAxiosWrapper = mount( <IndexPage> </IndexPage>);
+                            const mockedAxiosWrapper = mount( < IndexPage > < /IndexPage>);
                                 mockedAxiosWrapper.update();
 
                                 setImmediate(() => {
-                                    expect(mockedAxiosWrapper.instance().state.imageList.items).to.have.lengthOf(2);
+
+                                    expect(mockedAxiosWrapper.instance().state.imageList.items).to.equal("error");
                                     done()
 
                                 })
+                            });
                     });
-    it('axios mock for error request', function (done) {
-                            let mockAdapter = new MockAdapter(axios);
-                            var tags;
-                            mockAdapter.onGet('./feeds/'+tags).reply(500,{});
-
-                            const mockedAxiosWrapper = mount( <IndexPage> </IndexPage>);
-                                mockedAxiosWrapper.update();
-
-                                setImmediate(() => {
-                                   
-                              expect(mockedAxiosWrapper.instance().state.imageList.items).to.equal("error");
-                                    done()
-
-                                })
-                    });
-            });
