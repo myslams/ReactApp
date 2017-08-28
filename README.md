@@ -21,6 +21,7 @@ Features of the App
 3) Shows loadig screen when images are being fetched.
 4) Shows error on failing to fetch images.
 
+Note : The Flickr icon near the title may not display if you are behind a firewall.
 
 Unit testing
 All react components along with nodejs restful api test cases are written using following libraries.
