@@ -5,7 +5,7 @@ This application fetches pubic images from flickr ans hows it to the user. The u
 Demo : http://ec2-52-53-167-255.us-west-1.compute.amazonaws.com
 Deployed o aws EC2 instance and running it using forever.
 
-The application is designed using nodejs, react, semantic ui( as a css framework) etc.
+The application is designed using nodejs, react, semantic ui( as a css framework), babel, webpack, jest etc.
 
 After npm install. Following are the commands.
 
